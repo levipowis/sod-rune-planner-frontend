@@ -16,3 +16,8 @@ html {
 footer {
   text-align: center;
 }
+
+#buildsIndex {
+  max-width: 50%;
+  margin: 80px auto 0px;
+}

@@ -1,12 +1,34 @@
 export function BuildsIndex(props) {
   return (
-    <div>
-      <h1>All Builds</h1>
-      {props.builds.map((build) => (
-        <div key={build.id}>
-          <h2>{build.build_name}</h2>
-        </div>
-      ))}
+    <div id="buildsIndex">
+      <h1 className="text-center">Builds</h1>
+      <table className="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th className="fs-5" scope="col">
+              Build Name
+            </th>
+            <th className="fs-5" scope="col">
+              Character Name
+            </th>
+            <th className="fs-5" scope="col">
+              Class
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {props.builds.map((build) => (
+            <tr key={build.id}>
+              <td className="text-warning" scope="row">
+                {build.build_name}
+                <img src="src/assets/icons/gear-fill.svg" alt="Gear" width="16" height="16" />
+              </td>
+              <td>{build.character_name}</td>
+              <td>{build.character_class}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
