@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <div>
+    <div style={{ backgroundColor: "black", color: "darkgray" }}>
       <BrowserRouter>
         <Header />
         <Content />

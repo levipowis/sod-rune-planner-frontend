@@ -30,20 +30,29 @@ export function Login() {
 
   return (
     <div id="login">
-      <h1>Login</h1>
       <ul>
         {errors.map((error) => (
           <li key={error}>{error}</li>
         ))}
       </ul>
-      <form onSubmit={handleSubmit}>
-        <div>
-          Email: <input name="email" type="email" />
+      <form id="loginForm" onSubmit={handleSubmit}>
+        <div className="form-floating mb-3">
+          <input name="email" type="email" id="floatingInput" className="form-control" placeholder="name@example.com" />
+          <label htmlFor="floatingInput">Email Address</label>
         </div>
-        <div>
-          Password: <input name="password" type="password" />
+        <div className="form-floating">
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            id="floatingPassword"
+            className="form-control"
+          />
+          <label htmlFor="floatingPassword">Password</label>
         </div>
-        <button type="submit">Login</button>
+        <button id="loginButton" type="submit" className="btn btn-primary">
+          Login
+        </button>
       </form>
     </div>
   );

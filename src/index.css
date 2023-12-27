@@ -2,3 +2,12 @@ html {
   scroll-behavior: smooth;
   background-color: black;
 }
+
+#loginForm {
+  max-width: 300px;
+  margin: 30px auto 0px;
+}
+
+#loginButton {
+  margin: 10px auto 0px;
+}
