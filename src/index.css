@@ -11,3 +11,7 @@ html {
 #loginButton {
   margin: 10px auto 0px;
 }
+
+footer {
+  text-align: center;
+}
