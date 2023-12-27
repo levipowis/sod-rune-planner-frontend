@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export function Header() {
   return (
     <header>
-      <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "black" }} data-bs-theme="dark">
+      <nav className="navbar navbar-expand-lg" data-bs-theme="dark">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
             Rune Planner

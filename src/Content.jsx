@@ -24,7 +24,7 @@ export function Content() {
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={localStorage.jwt === undefined ? <Home /> : <BuildsIndex builds={builds} />} />
         <Route path="/builds" element={<BuildsIndex builds={builds} />} />
       </Routes>
     </div>
