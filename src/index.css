@@ -3,7 +3,7 @@ html {
   background-color: black;
 }
 
-#loginForm {
+#login, #signup {
   max-width: 300px;
   margin: 30px auto 0px;
 }

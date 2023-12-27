@@ -23,26 +23,32 @@ export function Signup() {
 
   return (
     <div id="signup">
-      <h1>Signup</h1>
+      <h1 style={{ color: "white" }}>Signup</h1>
       <ul>
         {errors.map((error) => (
           <li key={error}>{error}</li>
         ))}
       </ul>
-      <form onSubmit={handleSubmit}>
-        <div>
-          Name: <input name="name" type="text" />
+      <form id="signupForm" onSubmit={handleSubmit}>
+        <div className="form-floating mb-3">
+          <input className="form-control" placeholder="Name" name="name" type="text" />
+          <label htmlFor="floatingInput">Name</label>
         </div>
-        <div>
-          Email: <input name="email" type="email" />
+        <div className="form-floating mb-3">
+          <input className="form-control" placeholder="name@example.com" name="email" type="email" />
+          <label htmlFor="floatingInput">Email Address</label>
         </div>
-        <div>
-          Password: <input name="password" type="password" />
+        <div className="form-floating mb-3">
+          <input className="form-control" name="password" id="floatingPassword" type="password" />
+          <label htmlFor="floatingPassword">Password</label>
         </div>
-        <div>
-          Password confirmation: <input name="password_confirmation" type="password" />
+        <div className="form-floating mb-3">
+          <input className="form-control" name="password_confirmation" type="password" />
+          <label htmlFor="floatingPassword">Confirm Password</label>
         </div>
-        <button type="submit">Signup</button>
+        <button id="signupButton" className="btn btn-primary" type="submit">
+          Signup
+        </button>
       </form>
     </div>
   );
