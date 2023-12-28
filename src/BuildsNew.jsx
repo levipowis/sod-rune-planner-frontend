@@ -32,17 +32,17 @@ export function BuildsNew() {
           {" "}
           <label htmlFor="build_name">BUILD NAME:</label>
         </div>
-        <div className="form-floating mb-3">
-          <input className="form-control" type="text" name="build_name" placeholder="Build Name" />
+        <div className="mb-3">
+          <input className="form-control" type="text" name="build_name" />
         </div>
         <div>
           {" "}
           <label htmlFor="build_name">CHARACTER NAME:</label>
         </div>
-        <div className="form-floating mb-3">
-          <input className="form-control" type="text" name="character_name" placeholder="Character Name" />
+        <div className="mb-3">
+          <input className="form-control" type="text" name="character_name" />
         </div>
-        <div className="mt-3 m-auto w-100">
+        <div className="mb-3">
           CLASS:
           <Select className="text-dark" options={classOptions} onChange={handleClassSelection} autoFocus={true} />
         </div>
