@@ -17,11 +17,11 @@ export function BuildsNew() {
   const [selectedClass, setSelectedClass] = useState();
 
   const handleClassSelection = (selectedClassOption) => {
-    setSelectedClass(selectedClassOption);
+    setSelectedClass(selectedClassOption.value);
   };
 
   useEffect(() => {
-    console.log("Option selected:", selectedClass);
+    console.log("Selected class:", selectedClass);
   });
 
   return (
