@@ -21,7 +21,6 @@ export function BuildsIndex(props) {
             <tr key={build.id}>
               <td className="text-warning" scope="row">
                 {build.build_name}
-                <img src="src/assets/icons/gear-fill.svg" alt="Gear" width="16" height="16" />
               </td>
               <td>{build.character_name}</td>
               <td>{build.character_class}</td>

@@ -21,3 +21,8 @@ footer {
   max-width: 50%;
   margin: 80px auto 0px;
 }
+
+#newBuildForm {
+  max-width: 25%;
+  margin: 60px auto 0px;
+}

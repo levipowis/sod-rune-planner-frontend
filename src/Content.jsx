@@ -5,6 +5,7 @@ import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { Home } from "./Home";
 import { BuildsIndex } from "./BuildsIndex";
+import { BuildsNew } from "./BuildsNew";
 
 export function Content() {
   const [builds, setBuilds] = useState([]);
@@ -26,6 +27,7 @@ export function Content() {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={localStorage.jwt === undefined ? <Home /> : <BuildsIndex builds={builds} />} />
         <Route path="/builds" element={<BuildsIndex builds={builds} />} />
+        <Route path="/builds/new" element={<BuildsNew />} />
       </Routes>
     </div>
   );
