@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Select from "react-select";
 
-export function BuildsNew() {
+export function BuildsNew(props) {
   const classOptions = [
     { value: "Warrior", label: "Warrior" },
     { value: "Hunter", label: "Hunter" },
@@ -15,13 +15,21 @@ export function BuildsNew() {
   ];
 
   const [selectedClass, setSelectedClass] = useState();
+  const [classRunes, setClassRunes] = useState([]);
 
   const handleClassSelection = (selectedClassOption) => {
     setSelectedClass(selectedClassOption.value);
   };
 
+  const handleFilterGloveRunesByClass = () => {
+    setClassRunes(props.runes.filter((rune) => rune.character_class.includes(selectedClass)));
+  };
+
+  useEffect(handleFilterGloveRunesByClass, [props.runes, selectedClass]);
+
   useEffect(() => {
     console.log("Selected class:", selectedClass);
+    console.log("Class runes:", classRunes);
   });
 
   return (
