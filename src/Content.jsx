@@ -9,6 +9,7 @@ import { BuildsNew } from "./BuildsNew";
 
 export function Content() {
   const [builds, setBuilds] = useState([]);
+  const [runes, setRunes] = useState([]);
 
   const handleIndexBuilds = () => {
     console.log("handleIndexBuilds");
@@ -18,7 +19,16 @@ export function Content() {
     });
   };
 
+  const handleIndexRunes = () => {
+    console.log("handleIndexRunes");
+    axios.get("http://localhost:3000/runes.json").then((response) => {
+      console.log(response.data);
+      setRunes(response.data);
+    });
+  };
+
   useEffect(handleIndexBuilds, []);
+  useEffect(handleIndexRunes, []);
 
   return (
     <div>
@@ -27,7 +37,7 @@ export function Content() {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={localStorage.jwt === undefined ? <Home /> : <BuildsIndex builds={builds} />} />
         <Route path="/builds" element={<BuildsIndex builds={builds} />} />
-        <Route path="/builds/new" element={<BuildsNew />} />
+        <Route path="/builds/new" element={<BuildsNew runes={runes} />} />
       </Routes>
     </div>
   );
