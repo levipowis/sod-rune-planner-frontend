@@ -63,6 +63,10 @@ export function BuildsNew(props) {
           CLASS:
           <Select className="text-dark" options={classOptions} onChange={handleClassSelection} autoFocus={true} />
         </div>
+        <div className="mb-3">
+          GLOVE RUNE:
+          <Select className="text-dark" options={classGloveRunes} />
+        </div>
       </form>
     </div>
   );
