@@ -15,21 +15,30 @@ export function BuildsNew(props) {
   ];
 
   const [selectedClass, setSelectedClass] = useState();
-  const [classRunes, setClassRunes] = useState([]);
+  const [classGloveRunes, setClassGloveRunes] = useState([]);
 
   const handleClassSelection = (selectedClassOption) => {
     setSelectedClass(selectedClassOption.value);
   };
 
   const handleFilterGloveRunesByClass = () => {
-    setClassRunes(props.runes.filter((rune) => rune.character_class.includes(selectedClass)));
+    setClassGloveRunes(
+      props.runes
+        .filter((rune) => rune.character_class.includes(selectedClass) && rune.rune_slot.includes("Gloves"))
+        .map((rune) => {
+          let newArray = {};
+          newArray["value"] = rune.name;
+          newArray["label"] = rune.name;
+          return newArray;
+        })
+    );
   };
 
   useEffect(handleFilterGloveRunesByClass, [props.runes, selectedClass]);
 
   useEffect(() => {
     console.log("Selected class:", selectedClass);
-    console.log("Class runes:", classRunes);
+    console.log("Class glove runes:", classGloveRunes);
   });
 
   return (
