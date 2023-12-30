@@ -1,7 +1,12 @@
+import { Link } from "react-router-dom";
+
 export function BuildsIndex(props) {
   return (
-    <div id="buildsIndex">
+    <div className="container-lg" id="buildsIndex">
       <h1 className="text-center">Builds</h1>
+      <Link className="btn btn-dark mb-2 float-end" to="/builds/new">
+        New Build
+      </Link>
       <table className="table table-dark table-striped">
         <thead>
           <tr>
