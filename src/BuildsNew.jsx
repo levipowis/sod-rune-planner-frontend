@@ -27,7 +27,7 @@ export function BuildsNew(props) {
         .filter((rune) => rune.character_class.includes(selectedClass) && rune.rune_slot.includes("Gloves"))
         .map((rune) => {
           let newArray = {};
-          newArray["value"] = rune.name;
+          newArray["value"] = rune.id;
           newArray["label"] = rune.name;
           return newArray;
         })
@@ -61,11 +61,17 @@ export function BuildsNew(props) {
         </div>
         <div className="mb-3">
           CLASS:
-          <Select className="text-dark" options={classOptions} onChange={handleClassSelection} autoFocus={true} />
+          <Select
+            className="text-dark"
+            name="character_class"
+            options={classOptions}
+            onChange={handleClassSelection}
+            autoFocus={true}
+          />
         </div>
         <div className="mb-3">
           GLOVE RUNE:
-          <Select className="text-dark" options={classGloveRunes} />
+          <Select className="text-dark" name="glove_rune_id" options={classGloveRunes} />
         </div>
       </form>
     </div>
