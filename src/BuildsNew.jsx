@@ -16,6 +16,8 @@ export function BuildsNew(props) {
 
   const [selectedClass, setSelectedClass] = useState();
   const [classGloveRunes, setClassGloveRunes] = useState([]);
+  const [classChestRunes, setClassChestRunes] = useState([]);
+  const [classLegRunes, setClassLegRunes] = useState([]);
 
   const handleClassSelection = (selectedClassOption) => {
     setSelectedClass(selectedClassOption.value);
@@ -34,16 +36,52 @@ export function BuildsNew(props) {
     );
   };
 
+  const handleFilterChestRunesByClass = () => {
+    setClassChestRunes(
+      props.runes
+        .filter((rune) => rune.character_class.includes(selectedClass) && rune.rune_slot.includes("Chest"))
+        .map((rune) => {
+          let newArray = {};
+          newArray["value"] = rune.id;
+          newArray["label"] = rune.name;
+          return newArray;
+        })
+    );
+  };
+
+  const handleFilterLegRunesByClass = () => {
+    setClassLegRunes(
+      props.runes
+        .filter((rune) => rune.character_class.includes(selectedClass) && rune.rune_slot.includes("Legs"))
+        .map((rune) => {
+          let newArray = {};
+          newArray["value"] = rune.id;
+          newArray["label"] = rune.name;
+          return newArray;
+        })
+    );
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const params = new FormData(event.target);
+    props.onCreateBuild(params, () => event.target.reset());
+  };
+
   useEffect(handleFilterGloveRunesByClass, [props.runes, selectedClass]);
+  useEffect(handleFilterChestRunesByClass, [props.runes, selectedClass]);
+  useEffect(handleFilterLegRunesByClass, [props.runes, selectedClass]);
 
   useEffect(() => {
     console.log("Selected class:", selectedClass);
     console.log("Class glove runes:", classGloveRunes);
+    console.log("Class chest runes:", classChestRunes);
+    console.log("Class leg runes:", classLegRunes);
   });
 
   return (
     <div>
-      <form id="newBuildForm">
+      <form id="newBuildForm" onSubmit={handleSubmit}>
         <h1 style={{ color: "white" }}>New Build</h1>
         <div>
           {" "}
@@ -72,6 +110,19 @@ export function BuildsNew(props) {
         <div className="mb-3">
           GLOVE RUNE:
           <Select className="text-dark" name="glove_rune_id" options={classGloveRunes} />
+        </div>
+        <div className="mb-3">
+          CHEST RUNE:
+          <Select className="text-dark" name="glove_rune_id" options={classChestRunes} />
+        </div>
+        <div className="mb-3">
+          LEG RUNE:
+          <Select className="text-dark" name="glove_rune_id" options={classLegRunes} />
+        </div>
+        <div className="mb-3">
+          <button type="submit" className="btn btn-dark">
+            Create Build
+          </button>
         </div>
       </form>
     </div>
