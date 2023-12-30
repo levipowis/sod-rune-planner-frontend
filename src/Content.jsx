@@ -19,6 +19,14 @@ export function Content() {
     });
   };
 
+  const handleCreateBuild = (params, successCallback) => {
+    console.log("handleCreateBuild", params);
+    axios.post("http://localhost:3000/builds.json", params).then((response) => {
+      setBuilds([...builds], response.data);
+      successCallback();
+    });
+  };
+
   const handleIndexRunes = () => {
     console.log("handleIndexRunes");
     axios.get("http://localhost:3000/runes.json").then((response) => {
@@ -37,7 +45,7 @@ export function Content() {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={localStorage.jwt === undefined ? <Home /> : <BuildsIndex builds={builds} />} />
         <Route path="/builds" element={<BuildsIndex builds={builds} />} />
-        <Route path="/builds/new" element={<BuildsNew runes={runes} />} />
+        <Route path="/builds/new" element={<BuildsNew runes={runes} onCreateBuild={handleCreateBuild} />} />
       </Routes>
     </div>
   );

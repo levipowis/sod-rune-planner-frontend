@@ -109,15 +109,15 @@ export function BuildsNew(props) {
         </div>
         <div className="mb-3">
           GLOVE RUNE:
-          <Select className="text-dark" name="glove_rune_id" options={classGloveRunes} />
+          <Select className="text-dark" name="gloves_rune_id" options={classGloveRunes} />
         </div>
         <div className="mb-3">
           CHEST RUNE:
-          <Select className="text-dark" name="glove_rune_id" options={classChestRunes} />
+          <Select className="text-dark" name="chest_rune_id" options={classChestRunes} />
         </div>
         <div className="mb-3">
           LEG RUNE:
-          <Select className="text-dark" name="glove_rune_id" options={classLegRunes} />
+          <Select className="text-dark" name="legs_rune_id" options={classLegRunes} />
         </div>
         <div className="mb-3">
           <button type="submit" className="btn btn-dark">
