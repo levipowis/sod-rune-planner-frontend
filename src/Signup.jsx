@@ -46,7 +46,7 @@ export function Signup() {
           <input className="form-control" name="password_confirmation" type="password" />
           <label htmlFor="floatingPassword">Confirm Password</label>
         </div>
-        <button id="signupButton" className="btn btn-primary" type="submit">
+        <button id="signupButton" className="btn btn-dark" type="submit">
           Signup
         </button>
       </form>

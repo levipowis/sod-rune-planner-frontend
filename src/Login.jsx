@@ -50,7 +50,7 @@ export function Login() {
           />
           <label htmlFor="floatingPassword">Password</label>
         </div>
-        <button id="loginButton" type="submit" className="btn btn-primary">
+        <button id="loginButton" type="submit" className="btn btn-dark">
           Login
         </button>
       </form>
