@@ -26,6 +26,9 @@ export function BuildsIndex(props) {
             <tr key={build.id}>
               <td className="text-warning" scope="row">
                 {build.build_name}
+                <button type="button" onClick={() => props.onShowBuild(build)}>
+                  <img src="/src/assets/icons/pencil-square.svg" alt="pencil-square-icon" />
+                </button>
               </td>
               <td>{build.character_name}</td>
               <td>{build.character_class}</td>
