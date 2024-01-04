@@ -6,7 +6,7 @@ export function Home() {
       <h1>Welcome to Rune Planner for Season of Discovery!</h1>
       <h1>
         Please{" "}
-        <Link style={{ color: "gray", textDecoration: "none" }} to="/login">
+        <Link className="link-warning link-underline-opacity-0" to="/login">
           Login
         </Link>{" "}
         to view your builds and create new ones!

@@ -6,6 +6,7 @@ import { Login } from "./Login";
 import { Home } from "./Home";
 import { BuildsIndex } from "./BuildsIndex";
 import { BuildsNew } from "./BuildsNew";
+import { BuildsShow } from "./BuildsShow";
 import { Modal } from "./Modal";
 
 export function Content() {
@@ -67,7 +68,7 @@ export function Content() {
         <Route path="/builds/new" element={<BuildsNew runes={runes} onCreateBuild={handleCreateBuild} />} />
       </Routes>
       <Modal show={isBuildsShowVisible} onClose={handleClose}>
-        <h1>TEST</h1>
+        <BuildsShow build={currentBuild} />
       </Modal>
     </div>
   );

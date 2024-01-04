@@ -6,7 +6,7 @@ export function Header() {
     <header>
       <nav className="navbar navbar-expand-lg" data-bs-theme="dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand text-warning" href="#">
             Rune Planner
           </a>
           <button
@@ -43,7 +43,7 @@ export function Header() {
               ) : (
                 <>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/builds">
+                    <Link className="nav-link" to="/">
                       All Builds
                     </Link>
                   </li>
