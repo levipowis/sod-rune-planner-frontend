@@ -7,12 +7,14 @@ import { Home } from "./Home";
 import { BuildsIndex } from "./BuildsIndex";
 import { BuildsNew } from "./BuildsNew";
 import { BuildsShow } from "./BuildsShow";
+import { BuildsUpdate } from "./BuildsUpdate";
 import { Modal } from "./Modal";
 
 export function Content() {
   const [builds, setBuilds] = useState([]);
   const [runes, setRunes] = useState([]);
   const [isBuildsShowVisible, setIsBuildsShowVisible] = useState(false);
+  const [isBuildsUpdateVisible, setIsBuildsUpdateVisible] = useState(false);
   const [currentBuild, setCurrentBuild] = useState({});
 
   const handleIndexBuilds = () => {
@@ -31,15 +33,43 @@ export function Content() {
     });
   };
 
+  const handleUpdateBuild = (id, params, successCallback) => {
+    console.log("handleUpdateBuild", params);
+    axios.patch(`http://localhost:3000/builds/${id}.json`, params).then((response) => {
+      setBuilds(
+        builds.map((build) => {
+          if (build.id === response.data.id) {
+            return response.data;
+          } else {
+            return build;
+          }
+        })
+      );
+      successCallback();
+      handleCloseBuildsUpdate();
+    });
+  };
+
   const handleShowBuild = (build) => {
     console.log("handleShowBuild", build);
     setIsBuildsShowVisible(true);
     setCurrentBuild(build);
   };
 
-  const handleClose = () => {
-    console.log("handleClose");
+  const handleShowUpdateBuild = (build) => {
+    console.log("handleShowUpdateBuild", build);
+    setIsBuildsUpdateVisible(true);
+    setCurrentBuild(build);
+  };
+
+  const handleCloseBuildsShow = () => {
+    console.log("handleCloseBuildsShow");
     setIsBuildsShowVisible(false);
+  };
+
+  const handleCloseBuildsUpdate = () => {
+    console.log("handleClosedBuildsShow");
+    setIsBuildsUpdateVisible(false);
   };
 
   const handleIndexRunes = () => {
@@ -61,14 +91,21 @@ export function Content() {
         <Route
           path="/"
           element={
-            localStorage.jwt === undefined ? <Home /> : <BuildsIndex builds={builds} onShowBuild={handleShowBuild} />
+            localStorage.jwt === undefined ? (
+              <Home />
+            ) : (
+              <BuildsIndex builds={builds} onShowBuild={handleShowBuild} onShowUpdateBuild={handleShowUpdateBuild} />
+            )
           }
         />
         <Route path="/builds" element={<BuildsIndex builds={builds} />} />
         <Route path="/builds/new" element={<BuildsNew runes={runes} onCreateBuild={handleCreateBuild} />} />
       </Routes>
-      <Modal show={isBuildsShowVisible} onClose={handleClose}>
+      <Modal show={isBuildsShowVisible} onClose={handleCloseBuildsShow}>
         <BuildsShow build={currentBuild} />
+      </Modal>
+      <Modal show={isBuildsUpdateVisible} onClose={handleCloseBuildsUpdate}>
+        <BuildsUpdate build={currentBuild} runes={runes} onUpdateBuild={handleUpdateBuild} />
       </Modal>
     </div>
   );

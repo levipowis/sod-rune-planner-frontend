@@ -32,7 +32,11 @@ export function BuildsIndex(props) {
                 >
                   {build.build_name}
                 </button>
-                <button type="button" className="p-1 btn btn-link link-light" onClick={() => props.onShowBuild(build)}>
+                <button
+                  type="button"
+                  className="p-1 btn btn-link link-light"
+                  onClick={() => props.onShowUpdateBuild(build)}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
