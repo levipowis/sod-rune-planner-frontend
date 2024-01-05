@@ -65,7 +65,7 @@ export function BuildsNew(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
-    props.onCreateBuild(params, () => event.target.reset());
+    props.onCreateBuild(params, () => window.location.reload());
   };
 
   useEffect(handleFilterGloveRunesByClass, [props.runes, selectedClass]);
@@ -81,7 +81,7 @@ export function BuildsNew(props) {
 
   return (
     <div>
-      <form id="newBuildForm" onSubmit={handleSubmit}>
+      <form className="newBuildForm" onSubmit={handleSubmit}>
         <h1 style={{ color: "white" }}>New Build</h1>
         <div>
           {" "}

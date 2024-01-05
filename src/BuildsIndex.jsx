@@ -1,12 +1,10 @@
-import { Link } from "react-router-dom";
-
 export function BuildsIndex(props) {
   return (
     <div className="container-lg" id="buildsIndex">
       <h1 className="text-center">Builds</h1>
-      <Link className="btn btn-dark mb-2 float-end" to="/builds/new">
+      <button className="btn btn-dark mb-2 float-end" onClick={() => props.onShowBuildsNew()}>
         New Build
-      </Link>
+      </button>
       <table className="table table-dark table-striped">
         <thead>
           <tr>

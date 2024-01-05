@@ -15,6 +15,7 @@ export function Content() {
   const [runes, setRunes] = useState([]);
   const [isBuildsShowVisible, setIsBuildsShowVisible] = useState(false);
   const [isBuildsUpdateVisible, setIsBuildsUpdateVisible] = useState(false);
+  const [isBuildsNewVisible, setIsBuildsNewVisible] = useState(false);
   const [currentBuild, setCurrentBuild] = useState({});
 
   const handleIndexBuilds = () => {
@@ -30,6 +31,7 @@ export function Content() {
     axios.post("http://localhost:3000/builds.json", params).then((response) => {
       setBuilds([...builds], response.data);
       successCallback();
+      handleCloseBuildsNew();
     });
   };
 
@@ -62,6 +64,11 @@ export function Content() {
     setCurrentBuild(build);
   };
 
+  const handleShowBuildsNew = () => {
+    console.log("handleShowBuildsNew");
+    setIsBuildsNewVisible(true);
+  };
+
   const handleCloseBuildsShow = () => {
     console.log("handleCloseBuildsShow");
     setIsBuildsShowVisible(false);
@@ -70,6 +77,11 @@ export function Content() {
   const handleCloseBuildsUpdate = () => {
     console.log("handleClosedBuildsShow");
     setIsBuildsUpdateVisible(false);
+  };
+
+  const handleCloseBuildsNew = () => {
+    console.log("handleClosedBuildsNew");
+    setIsBuildsNewVisible(false);
   };
 
   const handleIndexRunes = () => {
@@ -94,7 +106,12 @@ export function Content() {
             localStorage.jwt === undefined ? (
               <Home />
             ) : (
-              <BuildsIndex builds={builds} onShowBuild={handleShowBuild} onShowUpdateBuild={handleShowUpdateBuild} />
+              <BuildsIndex
+                builds={builds}
+                onShowBuildsNew={handleShowBuildsNew}
+                onShowBuild={handleShowBuild}
+                onShowUpdateBuild={handleShowUpdateBuild}
+              />
             )
           }
         />
@@ -106,6 +123,9 @@ export function Content() {
       </Modal>
       <Modal show={isBuildsUpdateVisible} onClose={handleCloseBuildsUpdate}>
         <BuildsUpdate build={currentBuild} runes={runes} onUpdateBuild={handleUpdateBuild} />
+      </Modal>
+      <Modal show={isBuildsNewVisible} onClose={handleCloseBuildsNew}>
+        <BuildsNew runes={runes} onCreateBuild={handleCreateBuild} />
       </Modal>
     </div>
   );

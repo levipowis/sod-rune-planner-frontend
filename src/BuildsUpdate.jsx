@@ -78,7 +78,7 @@ export function BuildsUpdate(props) {
 
   return (
     <div>
-      <form id="newBuildForm" onSubmit={handleSubmit}>
+      <form className="updateBuildForm" onSubmit={handleSubmit}>
         <h1 style={{ color: "white" }}>Update Build</h1>
         <div>
           {" "}
