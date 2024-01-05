@@ -50,7 +50,11 @@ export function BuildsIndex(props) {
                     />
                   </svg>
                 </button>
-                <button type="button" className="p-1 btn btn-link link-light">
+                <button
+                  type="button"
+                  className="p-1 btn btn-link link-light"
+                  onClick={() => props.onShowBuildsDestroy(build)}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"

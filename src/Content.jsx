@@ -8,6 +8,7 @@ import { BuildsIndex } from "./BuildsIndex";
 import { BuildsNew } from "./BuildsNew";
 import { BuildsShow } from "./BuildsShow";
 import { BuildsUpdate } from "./BuildsUpdate";
+import { BuildsDestroy } from "./BuildsDestroy";
 import { Modal } from "./Modal";
 
 export function Content() {
@@ -16,6 +17,7 @@ export function Content() {
   const [isBuildsShowVisible, setIsBuildsShowVisible] = useState(false);
   const [isBuildsUpdateVisible, setIsBuildsUpdateVisible] = useState(false);
   const [isBuildsNewVisible, setIsBuildsNewVisible] = useState(false);
+  const [isBuildsDestroyVisible, setIsBuildsDestroyVisible] = useState(false);
   const [currentBuild, setCurrentBuild] = useState({});
 
   const handleIndexBuilds = () => {
@@ -52,14 +54,22 @@ export function Content() {
     });
   };
 
+  const handleDestroyBuild = (build) => {
+    console.log("handleDestroyBuild", build);
+    axios.delete(`http://localhost:3000/builds/${build.id}.json`).then(() => {
+      setBuilds(builds.filter((b) => b.id !== build.id));
+      handleCloseBuildsDestroy();
+    });
+  };
+
   const handleShowBuild = (build) => {
     console.log("handleShowBuild", build);
     setIsBuildsShowVisible(true);
     setCurrentBuild(build);
   };
 
-  const handleShowUpdateBuild = (build) => {
-    console.log("handleShowUpdateBuild", build);
+  const handleShowBuildsUpdate = (build) => {
+    console.log("handleShowBuildsUpdate", build);
     setIsBuildsUpdateVisible(true);
     setCurrentBuild(build);
   };
@@ -67,6 +77,12 @@ export function Content() {
   const handleShowBuildsNew = () => {
     console.log("handleShowBuildsNew");
     setIsBuildsNewVisible(true);
+  };
+
+  const handleShowBuildsDestroy = (build) => {
+    console.log("handleShowDestroyBuild", build);
+    setIsBuildsDestroyVisible(true);
+    setCurrentBuild(build);
   };
 
   const handleCloseBuildsShow = () => {
@@ -82,6 +98,11 @@ export function Content() {
   const handleCloseBuildsNew = () => {
     console.log("handleClosedBuildsNew");
     setIsBuildsNewVisible(false);
+  };
+
+  const handleCloseBuildsDestroy = () => {
+    console.log("handleCloseBuildsDestroy");
+    setIsBuildsDestroyVisible(false);
   };
 
   const handleIndexRunes = () => {
@@ -110,7 +131,8 @@ export function Content() {
                 builds={builds}
                 onShowBuildsNew={handleShowBuildsNew}
                 onShowBuild={handleShowBuild}
-                onShowUpdateBuild={handleShowUpdateBuild}
+                onShowUpdateBuild={handleShowBuildsUpdate}
+                onShowBuildsDestroy={handleShowBuildsDestroy}
               />
             )
           }
@@ -126,6 +148,9 @@ export function Content() {
       </Modal>
       <Modal show={isBuildsNewVisible} onClose={handleCloseBuildsNew}>
         <BuildsNew runes={runes} onCreateBuild={handleCreateBuild} />
+      </Modal>
+      <Modal show={isBuildsDestroyVisible} onClose={handleCloseBuildsDestroy}>
+        <BuildsDestroy build={currentBuild} runes={runes} onDestroyBuild={handleDestroyBuild} />
       </Modal>
     </div>
   );

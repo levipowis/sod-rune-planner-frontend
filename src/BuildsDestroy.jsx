@@ -5,8 +5,16 @@ export function BuildsDestroy(props) {
 
   return (
     <div className="buildsDestroy">
-      <h2>Are you shure you want to delete this build: {props.build.build_name}?</h2>
-      <button onClick={handleClick}>Delete Build</button>
+      <div className="d-grid col-9 mx-auto p-4">
+        <h2>
+          Are you sure you want to delete this build: <span className="text-warning">{props.build.build_name}</span>?
+        </h2>
+      </div>
+      <div className="d-grid col-2 mx-auto p-2">
+        <button className="btn btn-danger" onClick={handleClick}>
+          Delete Build
+        </button>
+      </div>
     </div>
   );
 }
