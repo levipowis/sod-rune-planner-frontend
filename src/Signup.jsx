@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function Signup() {
   const [errors, setErrors] = useState([]);
@@ -22,8 +23,16 @@ export function Signup() {
   };
 
   return (
-    <div id="signup">
-      <h1 style={{ color: "white" }}>Signup</h1>
+    <div className="signup">
+      <div>
+        <h1 className="text-light">SIGN UP</h1>
+      </div>
+      <div>
+        Already have an account?{" "}
+        <Link className="link-light" to="/login">
+          Log In
+        </Link>
+      </div>
       <ul>
         {errors.map((error) => (
           <li key={error}>{error}</li>

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export function Home() {
   return (
-    <div style={{ textAlign: "center", color: "white", margin: "200px auto 0px" }}>
+    <div className="home">
       <h1>Welcome to Rune Planner for Season of Discovery!</h1>
       <h1>
         Please{" "}

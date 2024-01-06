@@ -3,21 +3,34 @@ html {
   background-color: black;
 }
 
-#login, #signup {
-  max-width: 300px;
-  margin: 30px auto 0px;
-  color: gray;
-}
-
-#loginButton {
-  margin: 10px auto 0px;
-}
-
 footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: gray;
   text-align: center;
 }
 
-#buildsIndex {
+.home {
+ text-align: center;
+ margin: 200px auto 0px;
+}
+
+.login {
+  max-width: 300px;
+  margin: 5% auto;
+  color: gray;
+}
+
+.signup {
+  max-width: 300px;
+  margin: 5% auto;
+  color: gray;
+}
+
+.buildsIndex {
   max-width: 50%;
   margin: 80px auto 0px;
 }

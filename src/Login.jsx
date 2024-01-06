@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const jwt = localStorage.getItem("jwt");
 if (jwt) {
@@ -20,7 +21,7 @@ export function Login() {
         axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
         localStorage.setItem("jwt", response.data.jwt);
         event.target.reset();
-        window.location.href = "/"; // Change this to hide a modal, redirect to a specific page, etc.
+        window.location.href = "/";
       })
       .catch((error) => {
         console.log(error.response);
@@ -29,12 +30,21 @@ export function Login() {
   };
 
   return (
-    <div id="login">
+    <div className="login">
       <ul>
         {errors.map((error) => (
           <li key={error}>{error}</li>
         ))}
       </ul>
+      <div className="text-light">
+        <h1>LOG IN</h1>
+      </div>
+      <div className="mb-3">
+        {"Don't have an account?  "}
+        <Link className="link-light" to="/signup">
+          Sign Up
+        </Link>
+      </div>
       <form id="loginForm" onSubmit={handleSubmit}>
         <div className="form-floating mb-3">
           <input name="email" type="email" id="floatingInput" className="form-control" placeholder="name@example.com" />
@@ -50,9 +60,11 @@ export function Login() {
           />
           <label htmlFor="floatingPassword">Password</label>
         </div>
-        <button id="loginButton" type="submit" className="btn btn-dark">
-          Login
-        </button>
+        <div>
+          <button type="submit" className="btn btn-dark mt-3">
+            Login
+          </button>
+        </div>
       </form>
     </div>
   );

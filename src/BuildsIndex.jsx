@@ -1,7 +1,9 @@
 export function BuildsIndex(props) {
   return (
-    <div className="container-lg" id="buildsIndex">
-      <h1 className="text-center">Builds</h1>
+    <div className="buildsIndex">
+      <div className="text-center">
+        <h1>ALL BUILDS</h1>
+      </div>
       <button className="btn btn-dark mb-2 float-end" onClick={() => props.onShowBuildsNew()}>
         New Build
       </button>
