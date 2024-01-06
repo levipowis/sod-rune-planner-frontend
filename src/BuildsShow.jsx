@@ -1,9 +1,38 @@
+import { useState, useEffect } from "react";
+
 export function BuildsShow(props) {
+  const [classFontColor, setClassFontColor] = useState();
+  const characterClass = props.build.character_class;
+
+  const handleClassFontColor = () => {
+    if (characterClass === "Druid") {
+      setClassFontColor("#FF7C0A");
+    } else if (characterClass === "Hunter") {
+      setClassFontColor("#AAD372");
+    } else if (characterClass === "Mage") {
+      setClassFontColor("#3FC7EB");
+    } else if (characterClass === "Paladin") {
+      setClassFontColor("#F48CBA");
+    } else if (characterClass === "Priest") {
+      setClassFontColor("#FFFFFF");
+    } else if (characterClass === "Rogue") {
+      setClassFontColor("#FFF468");
+    } else if (characterClass === "Shaman") {
+      setClassFontColor("#0070DD");
+    } else if (characterClass === "Warlock") {
+      setClassFontColor("#8788EE");
+    } else if (characterClass === "Warrior") {
+      setClassFontColor("#C69B6D");
+    }
+  };
+
+  useEffect(handleClassFontColor, [characterClass]);
+
   return (
     <div className="container">
       <div className="row text-center m-4">
-        <h1>{props.build.build_name}</h1>
-        <h3>{props.build.character_name}</h3>
+        <h1 style={{ color: classFontColor }}>{props.build.character_name}</h1>
+        <h2>{props.build.build_name}</h2>
       </div>
       <div className="row">
         <div className="col">
