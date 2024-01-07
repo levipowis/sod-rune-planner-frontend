@@ -94,18 +94,18 @@ export function BuildsUpdate(props) {
           {" "}
           <label htmlFor="build_name">BUILD NAME:</label>
         </div>
-        <div className="mb-3">
+        <div className="mb-1">
           <input defaultValue={props.build.build_name} className="form-control" type="text" name="build_name" />
         </div>
         <div>
           {" "}
           <label htmlFor="build_name">CHARACTER NAME:</label>
         </div>
-        <div className="mb-3">
+        <div className="mb-1">
           <input defaultValue={props.build.character_name} className="form-control" type="text" name="character_name" />
         </div>
         {/* Select dropdowns using the react-select library */}
-        <div className="mb-3">
+        <div className="mb-1">
           CLASS:
           <Select
             defaultValue={defaultClass}
@@ -115,7 +115,7 @@ export function BuildsUpdate(props) {
             name="character_class"
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-1">
           GLOVE RUNE:
           <Select
             placeholder={defaultGlovesRune}
@@ -126,7 +126,7 @@ export function BuildsUpdate(props) {
             options={classGloveRunes}
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-1">
           CHEST RUNE:
           <Select
             placeholder={defaultChestRune}
@@ -137,7 +137,7 @@ export function BuildsUpdate(props) {
             options={classChestRunes}
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-1">
           LEG RUNE:
           <Select
             placeholder={defaultLegsRune}
@@ -149,7 +149,7 @@ export function BuildsUpdate(props) {
           />
         </div>
         {/* Button to submit build update form */}
-        <div className="mb-3">
+        <div className="mb-1">
           <button type="submit" className="btn btn-dark">
             Update Build
           </button>

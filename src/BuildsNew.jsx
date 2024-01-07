@@ -92,24 +92,24 @@ export function BuildsNew(props) {
     <div>
       {/* New build form */}
       <form className="newBuildForm" onSubmit={handleSubmit}>
-        <h1 style={{ color: "white" }}>New Build</h1>
+        <h1>New Build</h1>
         <div>
           {" "}
           <label htmlFor="build_name">BUILD NAME:</label>
         </div>
-        <div className="mb-3">
+        <div className="mb-1">
           <input className="form-control" type="text" name="build_name" />
         </div>
         <div>
           {" "}
           <label htmlFor="build_name">CHARACTER NAME:</label>
         </div>
-        <div className="mb-3">
+        <div className="mb-1">
           <input className="form-control" type="text" name="character_name" />
         </div>
 
         {/* Select dropdowns using the react-select library */}
-        <div className="mb-3">
+        <div className="mb-1">
           CLASS:
           <Select
             className="text-dark"
@@ -119,20 +119,20 @@ export function BuildsNew(props) {
             autoFocus={true}
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-1">
           GLOVE RUNE:
           <Select className="text-dark" name="gloves_rune_id" options={classGloveRunes} />
         </div>
-        <div className="mb-3">
+        <div className="mb-1">
           CHEST RUNE:
           <Select className="text-dark" name="chest_rune_id" options={classChestRunes} />
         </div>
-        <div className="mb-3">
+        <div className="mb-1">
           LEG RUNE:
           <Select className="text-dark" name="legs_rune_id" options={classLegRunes} />
         </div>
         {/* Button to submit new build form */}
-        <div className="mb-3">
+        <div className="mb-1">
           <button type="submit" className="btn btn-dark">
             Create Build
           </button>

@@ -15,7 +15,7 @@ footer {
 
 .home {
  text-align: center;
- margin: 200px auto 0px;
+ margin: 150px auto 0px;
 }
 
 .login {
@@ -37,5 +37,5 @@ footer {
 
 .newBuildForm, .updateBuildForm {
   max-width: 25%;
-  margin: 10px auto 60px;
+  margin: 0px auto 70px;
 }

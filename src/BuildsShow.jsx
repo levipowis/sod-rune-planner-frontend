@@ -98,7 +98,7 @@ export function BuildsShow(props) {
           </div>
         </div>
         <div className="row mt-5">
-          <div className="btn-group col-4 mx-auto mb-3">
+          <div className="btn-group col-5 mx-auto mb-3">
             <button type="button" className="btn btn-dark btn-lg" onClick={() => props.onShowUpdateBuild(props.build)}>
               Update Build
             </button>
