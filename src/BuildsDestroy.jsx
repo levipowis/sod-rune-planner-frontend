@@ -14,7 +14,7 @@ export function BuildsDestroy(props) {
       </div>
       {/* Delete Build button that calls the handleClick function on click */}
       <div className="d-grid col-2 mx-auto p-2">
-        <button className="btn btn-danger" onClick={handleClick}>
+        <button className="btn btn-danger btn-lg" onClick={handleClick}>
           Delete Build
         </button>
       </div>

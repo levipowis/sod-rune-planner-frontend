@@ -151,7 +151,11 @@ export function Content() {
 
       {/* Modal to show BuildsShow.jsx */}
       <Modal show={isBuildsShowVisible} onClose={handleCloseBuildsShow}>
-        <BuildsShow build={currentBuild} />
+        <BuildsShow
+          build={currentBuild}
+          onShowUpdateBuild={handleShowBuildsUpdate}
+          onShowBuildsDestroy={handleShowBuildsDestroy}
+        />
       </Modal>
 
       {/* Modal to show BuildsUpdate.jsx */}
