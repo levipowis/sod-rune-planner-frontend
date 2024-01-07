@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+// Gets jwt and stores it as a variable
 const jwt = localStorage.getItem("jwt");
 if (jwt) {
   axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
@@ -10,6 +11,7 @@ if (jwt) {
 export function Login() {
   const [errors, setErrors] = useState([]);
 
+  // Handler to submit login form and then load "/", throws an error message if email or password is invalid
   const handleSubmit = (event) => {
     event.preventDefault();
     setErrors([]);
@@ -31,6 +33,7 @@ export function Login() {
 
   return (
     <div className="login">
+      {/* Renders error if invalid email or password */}
       <ul>
         {errors.map((error) => (
           <li key={error}>{error}</li>
@@ -45,6 +48,7 @@ export function Login() {
           Sign Up
         </Link>
       </div>
+      {/* Login form */}
       <form id="loginForm" onSubmit={handleSubmit}>
         <div className="form-floating mb-3">
           <input name="email" type="email" id="floatingInput" className="form-control" placeholder="name@example.com" />
@@ -60,6 +64,7 @@ export function Login() {
           />
           <label htmlFor="floatingPassword">Password</label>
         </div>
+        {/* Button to submit login form */}
         <div>
           <button type="submit" className="btn btn-dark mt-3">
             Login

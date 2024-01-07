@@ -4,9 +4,11 @@ export function BuildsIndex(props) {
       <div className="text-center">
         <h1>ALL BUILDS</h1>
       </div>
+      {/* Button that opens BuildsNew.jsx in a modal */}
       <button className="btn btn-dark mb-2 float-end" onClick={() => props.onShowBuildsNew()}>
         New Build
       </button>
+      {/* A table to organize the current user's builds */}
       <table className="table table-dark table-striped">
         <thead>
           <tr>
@@ -22,9 +24,11 @@ export function BuildsIndex(props) {
           </tr>
         </thead>
         <tbody>
+          {/* Map method to dynamically render the current user's builds */}
           {props.builds.map((build) => (
             <tr key={build.id}>
               <td className="text-warning" scope="row">
+                {/* Build name is rendered as a button link that opens BuildsShow.jsx in a modal */}
                 <button
                   type="button"
                   className="p-1 btn btn-link link-warning"
@@ -32,6 +36,7 @@ export function BuildsIndex(props) {
                 >
                   {build.build_name}
                 </button>
+                {/* Edit icon from bootstrap-icons that opens BuildsUpdate.jsx in a modal */}
                 <button
                   type="button"
                   className="p-1 btn btn-link link-light"
@@ -52,6 +57,7 @@ export function BuildsIndex(props) {
                     />
                   </svg>
                 </button>
+                {/* Trash icon from bootstrap-icons that opens BuildsDestroy.jsx in a modal */}
                 <button
                   type="button"
                   className="p-1 btn btn-link link-light"

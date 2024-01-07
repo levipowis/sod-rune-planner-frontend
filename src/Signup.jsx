@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 export function Signup() {
   const [errors, setErrors] = useState([]);
 
+  // Hander to submit signup form on click and then load "/login" route, also catches and throws an error message
   const handleSubmit = (event) => {
     event.preventDefault();
     setErrors([]);
@@ -14,7 +15,7 @@ export function Signup() {
       .then((response) => {
         console.log(response.data);
         event.target.reset();
-        window.location.href = "/"; // Change this to hide a modal, redirect to a specific page, etc.
+        window.location.href = "/login"; // Change this to hide a modal, redirect to a specific page, etc.
       })
       .catch((error) => {
         console.log(error.response.data.errors);
@@ -33,11 +34,13 @@ export function Signup() {
           Log In
         </Link>
       </div>
+      {/* Renders error message */}
       <ul>
         {errors.map((error) => (
           <li key={error}>{error}</li>
         ))}
       </ul>
+      {/* Signup form */}
       <form id="signupForm" onSubmit={handleSubmit}>
         <div className="form-floating mb-3">
           <input className="form-control" placeholder="Name" name="name" type="text" />
@@ -55,6 +58,7 @@ export function Signup() {
           <input className="form-control" name="password_confirmation" type="password" />
           <label htmlFor="floatingPassword">Confirm Password</label>
         </div>
+        {/* Button to submit signup form */}
         <button id="signupButton" className="btn btn-dark" type="submit">
           Signup
         </button>

@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 
 export function BuildsShow(props) {
+  // State variable for storing font color based on the character class of the build
   const [classFontColor, setClassFontColor] = useState();
   const characterClass = props.build.character_class;
 
+  // Handler function to set the classFontColor state variable based on Blizzard's official class colors
   const handleClassFontColor = () => {
     if (characterClass === "Druid") {
       setClassFontColor("#FF7C0A");
@@ -26,15 +28,19 @@ export function BuildsShow(props) {
     }
   };
 
+  // Runs handleClassFontColor when page renders
   useEffect(handleClassFontColor, [characterClass]);
 
   return (
     <div className="container">
       <div className="row text-center m-4">
+        {/* Sets the color of the character name based on the character class */}
         <h1 style={{ color: classFontColor }}>{props.build.character_name}</h1>
         <h2>{props.build.build_name}</h2>
       </div>
+      {/* A three column grid that shows which rune is in which slot */}
       <div className="row">
+        {/* Gloves Rune grid column */}
         <div className="col">
           <div>
             <h4 className="p-2 text-warning text-center">Gloves Rune</h4>
@@ -45,6 +51,7 @@ export function BuildsShow(props) {
                 <img height="32" width="32" src={props.build.gloves_rune.image_url}></img>
               </span>
               <span className="m-2 fs-5">{props.build.gloves_rune.name}</span>
+              {/* Renders the rune description as HTML from the database */}
               <div
                 className="m-1 text-warning"
                 dangerouslySetInnerHTML={{ __html: props.build.gloves_rune.description }}
@@ -52,6 +59,7 @@ export function BuildsShow(props) {
             </div>
           </div>
         </div>
+        {/* Chest Rune grid column */}
         <div className="col">
           <div>
             <h4 className="p-2 text-warning text-center">Chest Rune</h4>
@@ -62,6 +70,7 @@ export function BuildsShow(props) {
                 <img height="32" width="32" src={props.build.chest_rune.image_url}></img>
               </span>
               <span className="m-2 fs-5">{props.build.chest_rune.name}</span>
+              {/* Renders the rune description as HTML from the database */}
               <div
                 className="m-1 text-warning"
                 dangerouslySetInnerHTML={{ __html: props.build.chest_rune.description }}
@@ -69,6 +78,7 @@ export function BuildsShow(props) {
             </div>
           </div>
         </div>
+        {/* Legs Rune grid column */}
         <div className="col">
           <div>
             <h4 className="p-2 text-warning text-center">Legs Rune</h4>
@@ -79,6 +89,7 @@ export function BuildsShow(props) {
                 <img height="32" width="32" src={props.build.legs_rune.image_url}></img>
               </span>
               <span className="m-2 fs-5">{props.build.legs_rune.name}</span>
+              {/* Renders the rune description as HTML from the database */}
               <div
                 className="m-1 text-warning"
                 dangerouslySetInnerHTML={{ __html: props.build.legs_rune.description }}

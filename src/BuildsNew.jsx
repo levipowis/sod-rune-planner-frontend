@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Select from "react-select";
 
 export function BuildsNew(props) {
+  // An array of options used by react-select to provide WoW character class choices
   const classOptions = [
     { value: "Warrior", label: "Warrior" },
     { value: "Hunter", label: "Hunter" },
@@ -14,15 +15,18 @@ export function BuildsNew(props) {
     { value: "Shaman", label: "Shaman" },
   ];
 
+  // State variables to store values used by handlers for selecting character class and rune options
   const [selectedClass, setSelectedClass] = useState();
   const [classGloveRunes, setClassGloveRunes] = useState([]);
   const [classChestRunes, setClassChestRunes] = useState([]);
   const [classLegRunes, setClassLegRunes] = useState([]);
 
+  // Sets selectedClass state variable from classOptions array
   const handleClassSelection = (selectedClassOption) => {
     setSelectedClass(selectedClassOption.value);
   };
 
+  // Filters runes based on selectedClass and the rune_slot being "Gloves"
   const handleFilterGloveRunesByClass = () => {
     setClassGloveRunes(
       props.runes
@@ -36,6 +40,7 @@ export function BuildsNew(props) {
     );
   };
 
+  // Filters runes based on selectedClass and the rune_slot being "Chest"
   const handleFilterChestRunesByClass = () => {
     setClassChestRunes(
       props.runes
@@ -49,6 +54,7 @@ export function BuildsNew(props) {
     );
   };
 
+  // Filters runes based on selectedClass and the rune_slot being "Legs"
   const handleFilterLegRunesByClass = () => {
     setClassLegRunes(
       props.runes
@@ -62,16 +68,19 @@ export function BuildsNew(props) {
     );
   };
 
+  // Handles the form submit to the backend and reloads BuildsIndex.jsx
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
     props.onCreateBuild(params, () => window.location.reload());
   };
 
+  // Runs the filter handlers after page renders
   useEffect(handleFilterGloveRunesByClass, [props.runes, selectedClass]);
   useEffect(handleFilterChestRunesByClass, [props.runes, selectedClass]);
   useEffect(handleFilterLegRunesByClass, [props.runes, selectedClass]);
 
+  // Console.log statements used for testing that run after page renders
   useEffect(() => {
     console.log("Selected class:", selectedClass);
     console.log("Class glove runes:", classGloveRunes);
@@ -81,6 +90,7 @@ export function BuildsNew(props) {
 
   return (
     <div>
+      {/* New build form */}
       <form className="newBuildForm" onSubmit={handleSubmit}>
         <h1 style={{ color: "white" }}>New Build</h1>
         <div>
@@ -97,6 +107,8 @@ export function BuildsNew(props) {
         <div className="mb-3">
           <input className="form-control" type="text" name="character_name" />
         </div>
+
+        {/* Select dropdowns using the react-select library */}
         <div className="mb-3">
           CLASS:
           <Select
@@ -119,6 +131,7 @@ export function BuildsNew(props) {
           LEG RUNE:
           <Select className="text-dark" name="legs_rune_id" options={classLegRunes} />
         </div>
+        {/* Button to submit new build form */}
         <div className="mb-3">
           <button type="submit" className="btn btn-dark">
             Create Build

@@ -20,6 +20,7 @@ export function Content() {
   const [isBuildsDestroyVisible, setIsBuildsDestroyVisible] = useState(false);
   const [currentBuild, setCurrentBuild] = useState({});
 
+  // Gets all builds from backend and sets the builds variable to the response
   const handleIndexBuilds = () => {
     console.log("handleIndexBuilds");
     axios.get("http://localhost:3000/builds.json").then((response) => {
@@ -28,6 +29,7 @@ export function Content() {
     });
   };
 
+  // Creates a new build and closes the Modal after
   const handleCreateBuild = (params, successCallback) => {
     console.log("handleCreateBuild", params);
     axios.post("http://localhost:3000/builds.json", params).then((response) => {
@@ -37,6 +39,7 @@ export function Content() {
     });
   };
 
+  // Updates a build and closes the Modal after
   const handleUpdateBuild = (id, params, successCallback) => {
     console.log("handleUpdateBuild", params);
     axios.patch(`http://localhost:3000/builds/${id}.json`, params).then((response) => {
@@ -54,6 +57,7 @@ export function Content() {
     });
   };
 
+  // Destroys a build and closes the Modal after
   const handleDestroyBuild = (build) => {
     console.log("handleDestroyBuild", build);
     axios.delete(`http://localhost:3000/builds/${build.id}.json`).then(() => {
@@ -62,6 +66,7 @@ export function Content() {
     });
   };
 
+  // Following handlers control Modal opening
   const handleShowBuild = (build) => {
     console.log("handleShowBuild", build);
     setIsBuildsShowVisible(true);
@@ -85,6 +90,7 @@ export function Content() {
     setCurrentBuild(build);
   };
 
+  // Following handler control Modal closing
   const handleCloseBuildsShow = () => {
     console.log("handleCloseBuildsShow");
     setIsBuildsShowVisible(false);
@@ -105,6 +111,7 @@ export function Content() {
     setIsBuildsDestroyVisible(false);
   };
 
+  // Gets all runes from backend and sets runes variable to the response
   const handleIndexRunes = () => {
     console.log("handleIndexRunes");
     axios.get("http://localhost:3000/runes.json").then((response) => {
@@ -113,6 +120,7 @@ export function Content() {
     });
   };
 
+  // Runs these index actions to get builds and runes from backend after page renders
   useEffect(handleIndexBuilds, []);
   useEffect(handleIndexRunes, []);
 
@@ -123,6 +131,7 @@ export function Content() {
         <Route path="/login" element={<Login />} />
         <Route
           path="/"
+          // Ternary that loads Home.jsx as "/" if jwt is undefined or BuildsIndex.jsx if jwt exists
           element={
             localStorage.jwt === undefined ? (
               <Home />
@@ -138,17 +147,24 @@ export function Content() {
           }
         />
         <Route path="/builds" element={<BuildsIndex builds={builds} />} />
-        <Route path="/builds/new" element={<BuildsNew runes={runes} onCreateBuild={handleCreateBuild} />} />
       </Routes>
+
+      {/* Modal to show BuildsShow.jsx */}
       <Modal show={isBuildsShowVisible} onClose={handleCloseBuildsShow}>
         <BuildsShow build={currentBuild} />
       </Modal>
+
+      {/* Modal to show BuildsUpdate.jsx */}
       <Modal show={isBuildsUpdateVisible} onClose={handleCloseBuildsUpdate}>
         <BuildsUpdate build={currentBuild} runes={runes} onUpdateBuild={handleUpdateBuild} />
       </Modal>
+
+      {/* Modal to show BuildsNew.jsx */}
       <Modal show={isBuildsNewVisible} onClose={handleCloseBuildsNew}>
         <BuildsNew runes={runes} onCreateBuild={handleCreateBuild} />
       </Modal>
+
+      {/* Modal to show BuildsDestroy.jsx */}
       <Modal show={isBuildsDestroyVisible} onClose={handleCloseBuildsDestroy}>
         <BuildsDestroy build={currentBuild} runes={runes} onDestroyBuild={handleDestroyBuild} />
       </Modal>

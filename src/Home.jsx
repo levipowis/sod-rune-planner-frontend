@@ -11,6 +11,13 @@ export function Home() {
         </Link>{" "}
         to view your builds and create new ones!
       </h1>
+      <h1 className="mt-5">
+        {"Don't have an account?"}{" "}
+        <Link className="link-warning link-underline-opacity-0" to="/signup">
+          Click here
+        </Link>
+        {" to sign up!"}
+      </h1>
     </div>
   );
 }

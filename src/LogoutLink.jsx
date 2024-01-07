@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export function LogoutLink() {
+  // Handler to remove jwt and loads "/" after
   const handleClick = (event) => {
     event.preventDefault();
     delete axios.defaults.headers.common["Authorization"];

@@ -48,11 +48,6 @@ export function Header() {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" onClick="/builds/new">
-                      New Build
-                    </Link>
-                  </li>
-                  <li className="nav-item">
                     <LogoutLink />
                   </li>
                 </>
