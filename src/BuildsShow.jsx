@@ -1,8 +1,17 @@
 import { useState, useEffect } from "react";
+import DOMPurify from "dompurify";
+import HtmlParser from "react-html-parser";
 
 export function BuildsShow(props) {
   // State variable for storing font color based on the character class of the build
   const [classFontColor, setClassFontColor] = useState();
+
+  // State variables for storing html content from the rune descriptions
+  const [glovesRuneDescription, setGlovesRuneDescription] = useState("");
+  const [chestRuneDescription, setChestRuneDescription] = useState("");
+  const [legsRuneDescription, setLegsRuneDescription] = useState("");
+
+  // Variable to store the current build's character class
   const characterClass = props.build.character_class;
 
   // Handler function to set the classFontColor state variable based on Blizzard's official class colors
@@ -31,6 +40,16 @@ export function BuildsShow(props) {
   // Runs handleClassFontColor when page renders
   useEffect(handleClassFontColor, [characterClass]);
 
+  // Sanitizes and sets rune description state variables
+  useEffect(() => {
+    const sanitizedGlovesRuneDescription = DOMPurify.sanitize(props.build.gloves_rune.description);
+    const sanitizedChestRuneDescription = DOMPurify.sanitize(props.build.chest_rune.description);
+    const sanitizedLegsRuneDescription = DOMPurify.sanitize(props.build.legs_rune.description);
+    setGlovesRuneDescription(sanitizedGlovesRuneDescription);
+    setChestRuneDescription(sanitizedChestRuneDescription);
+    setLegsRuneDescription(sanitizedLegsRuneDescription);
+  }, [props.build.gloves_rune.description, props.build.chest_rune.description, props.build.legs_rune.description]);
+
   return (
     <div className="container">
       <div className="row text-center m-4">
@@ -52,10 +71,7 @@ export function BuildsShow(props) {
               </span>
               <span className="m-2 fs-5">{props.build.gloves_rune.name}</span>
               {/* Renders the rune description as HTML from the database */}
-              <div
-                className="m-1 text-warning"
-                dangerouslySetInnerHTML={{ __html: props.build.gloves_rune.description }}
-              />
+              <div className="m-1 text-warning">{HtmlParser(glovesRuneDescription)}</div>
             </div>
           </div>
         </div>
@@ -71,10 +87,7 @@ export function BuildsShow(props) {
               </span>
               <span className="m-2 fs-5">{props.build.chest_rune.name}</span>
               {/* Renders the rune description as HTML from the database */}
-              <div
-                className="m-1 text-warning"
-                dangerouslySetInnerHTML={{ __html: props.build.chest_rune.description }}
-              />
+              <div className="m-1 text-warning">{HtmlParser(chestRuneDescription)}</div>
             </div>
           </div>
         </div>
@@ -90,10 +103,7 @@ export function BuildsShow(props) {
               </span>
               <span className="m-2 fs-5">{props.build.legs_rune.name}</span>
               {/* Renders the rune description as HTML from the database */}
-              <div
-                className="m-1 text-warning"
-                dangerouslySetInnerHTML={{ __html: props.build.legs_rune.description }}
-              />
+              <div className="m-1 text-warning">{HtmlParser(legsRuneDescription)}</div>
             </div>
           </div>
         </div>
