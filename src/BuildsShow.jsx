@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import DOMPurify from "dompurify";
-import HtmlParser from "react-html-parser";
+import HTMLReactParser from "html-react-parser";
 
 export function BuildsShow(props) {
   // State variable for storing font color based on the character class of the build
@@ -71,7 +71,7 @@ export function BuildsShow(props) {
               </span>
               <span className="m-2 fs-5">{props.build.gloves_rune.name}</span>
               {/* Renders the rune description as HTML from the database */}
-              <div className="m-1 text-warning">{HtmlParser(glovesRuneDescription)}</div>
+              <div className="m-1 text-warning">{HTMLReactParser(glovesRuneDescription)}</div>
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@ export function BuildsShow(props) {
               </span>
               <span className="m-2 fs-5">{props.build.chest_rune.name}</span>
               {/* Renders the rune description as HTML from the database */}
-              <div className="m-1 text-warning">{HtmlParser(chestRuneDescription)}</div>
+              <div className="m-1 text-warning">{HTMLReactParser(chestRuneDescription)}</div>
             </div>
           </div>
         </div>
@@ -103,7 +103,7 @@ export function BuildsShow(props) {
               </span>
               <span className="m-2 fs-5">{props.build.legs_rune.name}</span>
               {/* Renders the rune description as HTML from the database */}
-              <div className="m-1 text-warning">{HtmlParser(legsRuneDescription)}</div>
+              <div className="m-1 text-warning">{HTMLReactParser(legsRuneDescription)}</div>
             </div>
           </div>
         </div>
