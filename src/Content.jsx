@@ -23,7 +23,7 @@ export function Content() {
   // Gets all builds from backend and sets the builds variable to the response
   const handleIndexBuilds = () => {
     console.log("handleIndexBuilds");
-    axios.get("http://localhost:3000/builds.json").then((response) => {
+    axios.get("/builds.json").then((response) => {
       console.log(response.data);
       setBuilds(response.data);
     });
@@ -32,7 +32,7 @@ export function Content() {
   // Creates a new build and closes the Modal after
   const handleCreateBuild = (params, successCallback) => {
     console.log("handleCreateBuild", params);
-    axios.post("http://localhost:3000/builds.json", params).then((response) => {
+    axios.post("/builds.json", params).then((response) => {
       setBuilds([...builds], response.data);
       successCallback();
       handleCloseBuildsNew();
@@ -42,7 +42,7 @@ export function Content() {
   // Updates a build and closes the Modal after
   const handleUpdateBuild = (id, params, successCallback) => {
     console.log("handleUpdateBuild", params);
-    axios.patch(`http://localhost:3000/builds/${id}.json`, params).then((response) => {
+    axios.patch(`/builds/${id}.json`, params).then((response) => {
       setBuilds(
         builds.map((build) => {
           if (build.id === response.data.id) {
@@ -60,7 +60,7 @@ export function Content() {
   // Destroys a build and closes the Modal after
   const handleDestroyBuild = (build) => {
     console.log("handleDestroyBuild", build);
-    axios.delete(`http://localhost:3000/builds/${build.id}.json`).then(() => {
+    axios.delete(`/builds/${build.id}.json`).then(() => {
       setBuilds(builds.filter((b) => b.id !== build.id));
       handleCloseBuildsDestroy();
     });
@@ -114,7 +114,7 @@ export function Content() {
   // Gets all runes from backend and sets runes variable to the response
   const handleIndexRunes = () => {
     console.log("handleIndexRunes");
-    axios.get("http://localhost:3000/runes.json").then((response) => {
+    axios.get("/runes.json").then((response) => {
       console.log(response.data);
       setRunes(response.data);
     });
