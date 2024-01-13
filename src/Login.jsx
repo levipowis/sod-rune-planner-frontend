@@ -51,7 +51,14 @@ export function Login() {
       {/* Login form */}
       <form id="loginForm" onSubmit={handleSubmit}>
         <div className="form-floating mb-3">
-          <input name="email" type="email" id="floatingInput" className="form-control" placeholder="name@example.com" />
+          <input
+            name="email"
+            type="email"
+            id="floatingInput"
+            className="form-control"
+            placeholder="name@example.com"
+            defaultValue="test@test.com"
+          />
           <label htmlFor="floatingInput">Email Address</label>
         </div>
         <div className="form-floating">
@@ -61,6 +68,7 @@ export function Login() {
             placeholder="Password"
             id="floatingPassword"
             className="form-control"
+            defaultValue="password"
           />
           <label htmlFor="floatingPassword">Password</label>
         </div>
@@ -70,6 +78,7 @@ export function Login() {
             Login
           </button>
         </div>
+        <div className="text-warning fw-bold mt-3">{"To Login as a test user please click Login!"}</div>
       </form>
     </div>
   );
