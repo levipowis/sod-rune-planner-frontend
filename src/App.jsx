@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 function App() {
   return (
     // Sets the background color and text color for the app via Bootstrap class name
-    <div className="bg-black text-light">
+    <div>
       <BrowserRouter>
         <Header />
         <Content />
